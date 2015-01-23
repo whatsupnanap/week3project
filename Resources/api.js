@@ -5,13 +5,23 @@ exports.bunbun = function(lat, lng) {
 		onload : function(e) {
 			console.log("XHR onload has worked: " + e);
 			var json = JSON.parse(this.responseText);
-			var igData = {
-				username: data.username,
+			var igDataArray = [];
+			for(i=0, j=json.data.length; i<j;i++){
+				igDataArray.push({
+					
+					//////add more api json data if VINNY want more
+					user:json.data[i].user.username,
+					images:json.data[i].images.low_resolution.url,
+					//tags:json.data[i].tags,	
+				});
+				
 			};
 			
-			console.log("igData" + JSON.stringify(igData));
-			data.save(igData);
-			data.saveToCloud(igData);
+			
+			console.log(igDataArray);
+			console.log("igDataArray" + JSON.stringify(igDataArray));
+			data.save(igDataArray);
+			data.saveToCloud(igDataArray);
 		},
 
 		anerror : function(e) {
