@@ -27,7 +27,7 @@
 //	but is internal ONLY, and should NOT be used by javascript.
 @property(nonatomic,readwrite,assign) BOOL showsCancelButton;
 
-#pragma mark - wk3project Internal Use
+#pragma mark - HYP3Orlando Internal Use
 -(void)ensureSearchBarHeirarchy;
 @end
 

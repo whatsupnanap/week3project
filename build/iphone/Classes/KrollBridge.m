@@ -31,7 +31,7 @@ extern NSString * const TI_APPLICATION_DEPLOYTYPE;
 extern NSString * const TI_APPLICATION_GUID;
 extern NSString * const TI_APPLICATION_BUILD_TYPE;
 
-NSString * wk3project$ModuleRequireFormat = @"(function(exports){"
+NSString * HYP3Orlando$ModuleRequireFormat = @"(function(exports){"
 		"var __OXP=exports;var module={'exports':exports};var __dirname=\"%@\";var __filename=\"%@\";%@;\n"
 		"if(module.exports !== __OXP){return module.exports;}"
 		"return exports;})({})";
@@ -41,7 +41,7 @@ NSString * wk3project$ModuleRequireFormat = @"(function(exports){"
 void TiBindingRunLoopAnnounceStart(TiBindingRunLoop runLoop);
 
 
-@implementation wk3projectObject
+@implementation HYP3OrlandoObject
 
 -(NSDictionary*)modules
 {
@@ -332,7 +332,7 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 	[self removeProxies];
 	RELEASE_TO_NIL(preload);
 	RELEASE_TO_NIL(context);
-	RELEASE_TO_NIL(_wk3project);
+	RELEASE_TO_NIL(_hyp3orlando);
 	OSSpinLockLock(&krollBridgeRegistryLock);
 	CFSetRemoveValue(krollBridgeRegistry, self);
 	OSSpinLockUnlock(&krollBridgeRegistryLock);
@@ -541,7 +541,7 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 -(void)gc
 {
 	[context gc];
-	[_wk3project gc];
+	[_hyp3orlando gc];
 }
 
 #pragma mark Delegate
@@ -553,18 +553,18 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 
 -(void)didStartNewContext:(KrollContext*)kroll
 {
-	// create wk3project global object
+	// create HYP3Orlando global object
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     
-    // Load the "wk3project" object into the global scope
+    // Load the "HYP3Orlando" object into the global scope
 	NSString *basePath = (url==nil) ? [TiHost resourcePath] : [[[url path] stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"."];
-	_wk3project = [[wk3projectObject alloc] initWithContext:kroll host:host context:self baseURL:[NSURL fileURLWithPath:basePath]];
+	_hyp3orlando = [[HYP3OrlandoObject alloc] initWithContext:kroll host:host context:self baseURL:[NSURL fileURLWithPath:basePath]];
 	
 	TiContextRef jsContext = [kroll context];
-	TiValueRef tiRef = [KrollObject toValue:kroll value:_wk3project];
+	TiValueRef tiRef = [KrollObject toValue:kroll value:_hyp3orlando];
 	
-	NSString *_wk3projectNS = [NSString stringWithFormat:@"T%sanium","it"];
-	TiStringRef prop = TiStringCreateWithCFString((CFStringRef) _wk3projectNS);
+	NSString *_hyp3orlandoNS = [NSString stringWithFormat:@"T%sanium","it"];
+	TiStringRef prop = TiStringCreateWithCFString((CFStringRef) _hyp3orlandoNS);
 	TiStringRef prop2 = TiStringCreateWithCFString((CFStringRef) [NSString stringWithFormat:@"%si","T"]);
 	TiObjectRef globalRef = TiContextGetGlobalObject(jsContext);
 	TiObjectSetProperty(jsContext, globalRef, prop, tiRef,
@@ -586,7 +586,7 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 	{
 		for (NSString *name in preload)
 		{
-			KrollObject *ti = (KrollObject*)[_wk3project valueForKey:name];
+			KrollObject *ti = (KrollObject*)[_hyp3orlando valueForKey:name];
 			NSDictionary *values = [preload valueForKey:name];
 			for (id key in values)
 			{
@@ -626,7 +626,7 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 		NSNotification *notification = [NSNotification notificationWithName:kTiContextShutdownNotification object:self];
 		[[NSNotificationCenter defaultCenter] postNotification:notification];
 	}
-	[_wk3project gc];
+	[_hyp3orlando gc];
 	
 	if (shutdownCondition)
 	{
@@ -641,7 +641,7 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 {
 	TiThreadPerformOnMainThread(^{[self unregisterForMemoryWarning];}, NO);
 	[self removeProxies];
-	RELEASE_TO_NIL(_wk3project);
+	RELEASE_TO_NIL(_hyp3orlando);
     RELEASE_TO_NIL(console);
 	RELEASE_TO_NIL(context);
 	RELEASE_TO_NIL(preload);
@@ -748,7 +748,7 @@ CFMutableSetRef	krollBridgeRegistry = nil;
 	 */
 	
 	NSString *filename = [sourceURL lastPathComponent];
-	NSString *js = [[NSString alloc] initWithFormat:wk3project$ModuleRequireFormat, dirname, filename,code];
+	NSString *js = [[NSString alloc] initWithFormat:HYP3Orlando$ModuleRequireFormat, dirname, filename,code];
 
 	/* This most likely should be integrated with normal code flow, but to
 	 * minimize impact until a in-depth reconsideration of KrollContext can be
@@ -928,7 +928,7 @@ loadNativeJS:
         
 		if (![wrapper respondsToSelector:@selector(replaceValue:forKey:notification:)]) {
             [self setCurrentURL:oldURL];
-			@throw [NSException exceptionWithName:@"org.wk3project.kroll" 
+			@throw [NSException exceptionWithName:@"org.hyp3orlando.kroll" 
                                            reason:[NSString stringWithFormat:@"Module \"%@\" failed to leave a valid exports object",path] 
                                          userInfo:nil];
 		}
@@ -977,7 +977,7 @@ loadNativeJS:
 		return module;
 	}
 	
-	@throw [NSException exceptionWithName:@"org.wk3project.kroll" reason:[NSString stringWithFormat:@"Couldn't find module: %@",path] userInfo:nil];
+	@throw [NSException exceptionWithName:@"org.hyp3orlando.kroll" reason:[NSString stringWithFormat:@"Couldn't find module: %@",path] userInfo:nil];
 }
 
 + (NSArray *)krollBridgesUsingProxy:(id)proxy

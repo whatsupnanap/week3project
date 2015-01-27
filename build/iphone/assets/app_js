@@ -1,0 +1,1 @@
+var api=require("api");if(Ti.Network.online===!0){var Cloud=require("ti.cloud");Cloud.debug=!0,console.log("online"),Cloud.Users.login({login:"nanap",password:"12345"},function(e){e.success?api.bunbun():alert("Error Login")})}else if(Ti.Network.online===!1){var data=require("data");data.read(),console.log("no network")}

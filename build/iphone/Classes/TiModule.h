@@ -13,7 +13,7 @@
 @class TiHost;
 
 /**
- The base class for all wk3project modules
+ The base class for all HYP3Orlando modules
  */
 @interface TiModule : TiProxy 
 {
@@ -51,30 +51,30 @@
 // lifecycle
 
 /**
- wk3project Platform calls this method on startup.
+ HYP3Orlando Platform calls this method on startup.
  */
 -(void)startup;
 
 /**
- wk3project Platform calls this method on shutdown.
+ HYP3Orlando Platform calls this method on shutdown.
  @param sender The sender of the event.
  */
 -(void)shutdown:(id)sender;
 
 /**
- wk3project Platform calls this method on suspend.
+ HYP3Orlando Platform calls this method on suspend.
  @param sender The sender of the event.
  */
 -(void)suspend:(id)sender;
 
 /**
- wk3project Platform calls this method on entering background.
+ HYP3Orlando Platform calls this method on entering background.
  @param sender The sender of the event.
  */
 -(void)paused:(id)sender;
 
 /**
- wk3project Platform calls this method on resume.
+ HYP3Orlando Platform calls this method on resume.
  @param sender The sender of the event.
  */
 -(void)resume:(id)sender;

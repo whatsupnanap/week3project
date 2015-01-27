@@ -1,14 +1,16 @@
-var Cloud = require("ti.cloud");
-Cloud.debug = true;
-
 var api = require("api");
 // var geo = require("geo");
+
 
 // 
 
 // // geo.getGeo();
 // //ipad でやるとき↑
-if (Ti.Network.online) {
+if (Ti.Network.online ===true) {
+	var Cloud = require("ti.cloud");
+Cloud.debug = true;
+
+
 	console.log("online");
 	
 	
@@ -25,12 +27,12 @@ if (Ti.Network.online) {
 			alert("Error Login");
 		}
 		
-	}
-	);
+	});
 	// // //simulatorでやるとき↑
 // // 
 
-} else {
+} else if(Ti.Network.online === false) {
+
 	var data = require('data');
 	data.read();
 	console.log("no network");

@@ -7,9 +7,10 @@ var mainWindow = Ti.UI.createWindow({
 
 });
 
-if (Ti.Platform.osname === "ios") {
+console.log(Ti.Platform.osname);
 
-	var navigationWindow = Ti.UI.iOS.createNavigationWindow({
+if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
+	var navigationWindow = Titanium.UI.iOS.createNavigationWindow({
 		window : mainWindow
 	});
 };
@@ -18,18 +19,19 @@ exports.buildUI = function(obj) {
 	//console.log(obj);
 	console.log("obj " + JSON.stringify(obj));
 	var scrollView = Ti.UI.createScrollableView({
-		width :"100%",
-		height:"60%",
-		top:"19%",
-		backgroundColor:"black",
+		width : '100%',
+		height : '60%',
+		top : "19%",
+		backgroundColor : "black",
 		showHorizontalScrollIndicator : true,
+		// borderColor : '#FF0000',
+		// borderWidth : '2dp'
 		//backgroundColor:"red"
 	});
 	var views = [];
-	
-		
-	
-	for ( i = 0, j = obj.length; i < j; i++) {
+
+	for ( i = 0,
+	j = obj.length; i < j; i++) {
 
 		var mainView = Ti.UI.createView({
 			layout : "vertical",
@@ -37,8 +39,9 @@ exports.buildUI = function(obj) {
 		});
 		var igPic = Ti.UI.createImageView({
 			image : obj[i].image,
-			top:"0%",
-			height : "90%",
+			top : 0,
+			// height : "90%",
+			width : Ti.UI.FILL,
 			//scale:"50%"
 		});
 
@@ -47,19 +50,29 @@ exports.buildUI = function(obj) {
 				fontSize : "10dp",
 				//backgroundColor:"yellow"
 			},
-			bottom:"10%",
+			bottom : "10%",
 			color : "white",
 			text : "post by: " + obj[i].username,
 		});
-		
-		
-		
+
 		mainView.add(igPic);
 		mainView.add(usernameLbl);
 		views.push(mainView);
 		scrollView.views = views;
-
 	}
+	
+	var t = 0;
+	
+	setInterval(function(e) {
+		if(t >= scrollView.views.length) {
+			t = 0;
+		}
+		
+		scrollView.scrollToView(t);
+		t++;
+		
+	}, 3000);
+	
 	mainWindow.add(scrollView);
 	mainWindow.open();
 };
@@ -73,12 +86,12 @@ var hyp3Img = Ti.UI.createImageView({
 });
 
 var tagLabel = Ti.UI.createLabel({
-		text:"#HYP3Life",
-		textAlignment : "center",
-		color : "white",
-		fontSize:"25dp",
-		top:"15%",
-		});
+	text : "#HYP3Life",
+	textAlignment : "center",
+	color : "white",
+	fontSize : "25dp",
+	top : "15%",
+});
 
 ////instagram
 var igButton = Ti.UI.createView({
@@ -90,8 +103,13 @@ var igButton = Ti.UI.createView({
 
 });
 
+var igView = Ti.UI.createImageView({
+	image:"icons/icons_09.png",
+	height:"80%"
+});
+
 var igLabel = Ti.UI.createLabel({
-	text : "instagram",
+	//text : "instagram",
 	textAlignment : "center",
 	color : "white",
 	font : {
@@ -100,12 +118,13 @@ var igLabel = Ti.UI.createLabel({
 	}
 });
 
+
+
 var igWindow = Ti.UI.createWindow({
 	backgroundColor : "pink",
 	title : "#HYP3Life",
 	//fullscreen : true
 });
-
 
 //////facebook page BUTTON
 
@@ -119,7 +138,7 @@ var fbButton = Ti.UI.createView({
 });
 
 var fbLabel = Ti.UI.createLabel({
-	text : "facebook",
+	//text : "facebook",
 	textAlignment : "center",
 	color : "white",
 	font : {
@@ -128,9 +147,29 @@ var fbLabel = Ti.UI.createLabel({
 	}
 });
 
+var fvView = Ti.UI.createImageView({
+	image:"icons/icons_03.png",
+	height:"80%"
+});
+
+
 var fbWindow = Ti.UI.createWindow({
 	backgroundColor : "white",
 	//fullscreen : true
+});
+
+
+fbButton.addEventListener('click', function() {
+	var fbwindow = Ti.UI.createWindow();
+
+	var fbWv = Titanium.UI.createWebView({
+		url : 'https://www.facebook.com/HYP3Orlando'
+	});
+	fbwindow.add(fbWv);
+	navigationWindow.open();
+	navigationWindow.openWindow(fbwindow);
+	//window.open({modal:true});
+
 });
 
 ////twitter
@@ -145,7 +184,7 @@ var twitterButton = Ti.UI.createView({
 });
 
 var twitterLabel = Ti.UI.createLabel({
-	text : "twitter",
+	//text : "twitter",
 	textAlignment : "center",
 	color : "white",
 	font : {
@@ -154,17 +193,24 @@ var twitterLabel = Ti.UI.createLabel({
 	}
 });
 
-var twitterWindow = Ti.UI.createWindow({
-	backgroundColor : "blue",
-	//fullscreen : true
+var twitterView = Ti.UI.createImageView({
+	image:"icons/icons_06.png",
+	height:"80%"
 });
 
-// twitterButton.addEventListener('click', function(e) {
-//
-// var loadFile = require("custom");
-// navigationWindow.openWindow(customWindow);
-//
-// });
+twitterButton.addEventListener('click', function() {
+	var window = Ti.UI.createWindow();
+
+	var twitterWind = Titanium.UI.createWebView({
+		url : 'https://twitter.com/HYP3Orlando'
+	});
+	window.add(twitterWind);
+	console.log(navigationWindow);
+	navigationWindow.open();
+	navigationWindow.openWindow(window);
+	//window.open({modal:true});
+
+});
 
 ////EVENT
 
@@ -178,11 +224,11 @@ var snapButton = Ti.UI.createView({
 });
 
 var snapLabel = Ti.UI.createLabel({
-	text : "event",
+	text : "Events",
 	textAlignment : "center",
 	color : "white",
 	font : {
-		fontSize : "15dp",
+		fontSize : "15sp",
 		fontFamily : "Helvetica"
 	}
 });
@@ -192,12 +238,13 @@ var snapWindow = Ti.UI.createWindow({
 	//fullscreen : true
 });
 
-// snapButton.addEventListener('click', function(e) {
-//
-// var loadFile = require("custom");
-// navigationWindow.openWindow(customWindow);
-//
-// });
+snapButton.addEventListener('click', function() {
+	var eventWind = Ti.UI.createWindow();
+
+	//var loadFile = require("custom");
+	//navigationWindow.openWindow(customWindow);
+	eventWind.open();
+});
 
 ////contact
 
@@ -211,11 +258,11 @@ var contactButton = Ti.UI.createView({
 });
 
 var contactLabel = Ti.UI.createLabel({
-	text : "contact",
+	text : "Contact Us",
 	textAlignment : "center",
 	color : "white",
 	font : {
-		fontSize : "15dp",
+		fontSize : "15sp",
 		fontFamily : "Helvetica"
 	}
 });
@@ -237,29 +284,33 @@ var cameraButton = Ti.UI.createView({
 });
 
 var cameraLabel = Ti.UI.createLabel({
-	text : "camera",
+	text : "Camera",
 	textAlignment : "center",
 	color : "white",
 	font : {
-		fontSize : "15dp",
+		fontSize : "15sp",
 		fontFamily : "Helvetica"
 	}
 });
 
-cameraButton.addEventListener('click', function(){
+cameraButton.addEventListener('click', function() {
 	Titanium.Media.showCamera({
-		success:function(event) {
+		success : function(event) {
 			var imageView = Ti.UI.createImageView({
-				width:win.width,
-				height:win.height,
-				image:event.media
+				width : win.width,
+				height : win.height,
+				image : event.media
 			});
-			
-	},
-	saveToPhotoGallery:true
+
+		},
+		saveToPhotoGallery : true
 	});
 });
 
+
+fbLabel.add(fvView);
+twitterLabel.add(twitterView);
+igLabel.add(igView);
 //adding up
 cameraButton.add(cameraLabel);
 contactButton.add(contactLabel);

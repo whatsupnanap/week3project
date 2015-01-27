@@ -39,7 +39,7 @@ typedef enum {
 } EncodingError;
 
 /**
- wk3project orientation flags.
+ HYP3Orlando orientation flags.
  */
 typedef enum
 {

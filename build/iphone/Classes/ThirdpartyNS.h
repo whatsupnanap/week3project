@@ -7,8 +7,8 @@
  * WARNING: This is generated code. Modify at your own risk and without support.
  */
 
-#ifndef wk3project_ThirdpartyNS_h
-#define wk3project_ThirdpartyNS_h
+#ifndef HYP3Orlando_ThirdpartyNS_h
+#define HYP3Orlando_ThirdpartyNS_h
 
 #ifndef __TI_NAMESPACE_PREFIX_
 #define __TI_NAMESPACE_PREFIX_	TI

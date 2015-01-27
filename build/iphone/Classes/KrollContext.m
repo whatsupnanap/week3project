@@ -873,7 +873,7 @@ static TiValueRef StringFormatDecimalCallback (TiContextRef jsContext, TiObjectR
 {
 	if (stopped!=YES)
 	{
-		@throw [NSException exceptionWithName:@"org.wk3project.kroll" 
+		@throw [NSException exceptionWithName:@"org.hyp3orlando.kroll" 
 									   reason:@"already started"
 									 userInfo:nil];
 	}

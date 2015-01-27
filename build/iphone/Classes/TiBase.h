@@ -60,7 +60,7 @@ extern "C" {
 	#define KMETHOD_DEBUG MEMORY_DEBUG
 #endif
 
-// in simulator we redefine to format for wk3project Developer console
+// in simulator we redefine to format for HYP3Orlando Developer console
 
 
 #define TI_INLINE static __inline__
@@ -309,13 +309,13 @@ void TiExceptionThrowWithNameAndReason(NSString *exceptionName, NSString *reason
 #define DEFINE_EXCEPTIONS \
 - (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = [@"org.wk3project." stringByAppendingString:NSStringFromClass([self class])];\
+	NSString * exceptionName = [@"org.hyp3orlando." stringByAppendingString:NSStringFromClass([self class])];\
 	TiExceptionThrowWithNameAndReason(exceptionName,reason,subreason,location);\
 }\
 \
 + (void) throwException:(NSString *) reason subreason:(NSString*)subreason location:(NSString *)location\
 {\
-	NSString * exceptionName = @"org.wk3project";\
+	NSString * exceptionName = @"org.hyp3orlando";\
 	TiExceptionThrowWithNameAndReason(exceptionName,reason,subreason,location);\
 }\
 
@@ -415,28 +415,28 @@ DebugLog(@"[WARN] Ti%@.%@ DEPRECATED in %@, in favor of %@.",@"tanium",api,in,ne
 
  //MUST BE NEGATIVE, as it inhabits the same space as UIBarButtonSystemItem
 enum {
-	UIwk3projectNativeItemNone = -1, 
-	UIwk3projectNativeItemSpinner = -2,
-	UIwk3projectNativeItemProgressBar = -3,
+	UIHYP3OrlandoNativeItemNone = -1, 
+	UIHYP3OrlandoNativeItemSpinner = -2,
+	UIHYP3OrlandoNativeItemProgressBar = -3,
 	
-	UIwk3projectNativeItemSlider = -4,
-	UIwk3projectNativeItemSwitch = -5,
-	UIwk3projectNativeItemMultiButton = -6,
-	UIwk3projectNativeItemSegmented = -7,
+	UIHYP3OrlandoNativeItemSlider = -4,
+	UIHYP3OrlandoNativeItemSwitch = -5,
+	UIHYP3OrlandoNativeItemMultiButton = -6,
+	UIHYP3OrlandoNativeItemSegmented = -7,
 	
-	UIwk3projectNativeItemTextView = -8,
-	UIwk3projectNativeItemTextField = -9,
-	UIwk3projectNativeItemSearchBar = -10,
+	UIHYP3OrlandoNativeItemTextView = -8,
+	UIHYP3OrlandoNativeItemTextField = -9,
+	UIHYP3OrlandoNativeItemSearchBar = -10,
 	
-	UIwk3projectNativeItemPicker = -11,
-	UIwk3projectNativeItemDatePicker = -12,
+	UIHYP3OrlandoNativeItemPicker = -11,
+	UIHYP3OrlandoNativeItemDatePicker = -12,
 	
-	UIwk3projectNativeItemInfoLight = -13,
-	UIwk3projectNativeItemInfoDark = -14,
+	UIHYP3OrlandoNativeItemInfoLight = -13,
+	UIHYP3OrlandoNativeItemInfoDark = -14,
 	
-	UIwk3projectNativeItemDisclosure = -15,
+	UIHYP3OrlandoNativeItemDisclosure = -15,
 	
-	UIwk3projectNativeItemContactAdd = -16
+	UIHYP3OrlandoNativeItemContactAdd = -16
 };
 
 
@@ -617,7 +617,7 @@ void incrementKrollCounter();
 void decrementKrollCounter();
     
 /**
- *	TiThreadPerformOnMainThread should replace all wk3project instances of
+ *	TiThreadPerformOnMainThread should replace all HYP3Orlando instances of
  *	performSelectorOnMainThread, ESPECIALLY if wait is to be yes. That way,
  *	exceptional-case main thread activities can process them outside of the
  *	standard event loop.

@@ -54,7 +54,7 @@
     NSInteger activeAlertControllerCount;
 }
 
-//wk3project Support
+//HYP3Orlando Support
 -(CGRect)resizeView;
 -(void)repositionSubviews;
 -(UIView *)topWindowProxyView;

@@ -12,10 +12,9 @@ var read = function() {
 
 	//result set
 	var dbData = [];
-	//var dbPost = {};
-	//var dvPost = new Object();
+	
 	while (dbRow.isValidRow()) {
-		//dvPost.username = dbRow.fieldByName('username');
+		
 		dbData.push({
 			username:dbRow.fieldByName('username'),
 			image:dbRow.fieldByName('image')
@@ -30,6 +29,8 @@ var read = function() {
 	//api.buildUI(dbData);
 
 };
+
+exports.read = read;
 
 /// save to cloud
 exports.saveToCloud = function(apiInfo) {

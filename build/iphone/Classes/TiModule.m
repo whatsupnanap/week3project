@@ -157,7 +157,7 @@
 		if (resultClass==nil)
 		{
 			DebugLog(@"[WARN] Attempted to load %@: Could not find class definition.",className);
-			@throw [NSException exceptionWithName:@"org.wk3project.module" 
+			@throw [NSException exceptionWithName:@"org.hyp3orlando.module" 
 										   reason:[NSString stringWithFormat:@"invalid method (%@) passed to %@",name,[self class]] 
 										 userInfo:nil];
 		}
@@ -228,7 +228,7 @@
 
 -(id)bindCommonJSModule:(NSString*)code
 {
-	NSString *js = [[NSString alloc] initWithFormat:wk3project$ModuleRequireFormat,code];
+	NSString *js = [[NSString alloc] initWithFormat:HYP3Orlando$ModuleRequireFormat,code];
 	
 	id result = [[self pageContext] evalJSAndWait:js];
 	[js release];

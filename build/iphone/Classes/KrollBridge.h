@@ -19,9 +19,9 @@
 
 #ifdef KROLL_COVERAGE
 # import "KrollCoverage.h"
-@interface wk3projectObject : KrollCoverageObject {
+@interface HYP3OrlandoObject : KrollCoverageObject {
 #else
-@interface wk3projectObject : KrollObject {
+@interface HYP3OrlandoObject : KrollObject {
 #endif
 @private
 	NSMutableDictionary *modules;
@@ -35,7 +35,7 @@
 -(TiModule*)moduleNamed:(NSString*)name context:(id<TiEvaluator>)context;
 @end
 
-extern NSString * wk3project$ModuleRequireFormat;
+extern NSString * HYP3Orlando$ModuleRequireFormat;
 
 @interface KrollBridge : Bridge<TiEvaluator,KrollDelegate> {
 @private
@@ -44,7 +44,7 @@ extern NSString * wk3project$ModuleRequireFormat;
 	KrollContext *context;
 	NSDictionary *preload;
 	NSMutableDictionary *modules;
-	wk3projectObject *_wk3project;
+	HYP3OrlandoObject *_hyp3orlando;
     KrollObject* console;
 	BOOL shutdown;
     BOOL evaluationError;

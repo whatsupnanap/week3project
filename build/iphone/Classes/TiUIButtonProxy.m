@@ -68,10 +68,10 @@
 {
 	switch((int)styleCache)
 	{
-		case UIwk3projectNativeItemInfoLight:
-		case UIwk3projectNativeItemInfoDark:
+		case UIHYP3OrlandoNativeItemInfoLight:
+		case UIHYP3OrlandoNativeItemInfoDark:
 			return 18;
-		case UIwk3projectNativeItemDisclosure:
+		case UIHYP3OrlandoNativeItemDisclosure:
 			return 29;
 		default: {
 			break;
@@ -84,10 +84,10 @@
 {
 	switch((int)styleCache)
 	{
-		case UIwk3projectNativeItemInfoLight:
-		case UIwk3projectNativeItemInfoDark:
+		case UIHYP3OrlandoNativeItemInfoLight:
+		case UIHYP3OrlandoNativeItemInfoDark:
 			return 19;
-		case UIwk3projectNativeItemDisclosure:
+		case UIHYP3OrlandoNativeItemDisclosure:
 			return 31;
 		default: {
 			break;
@@ -101,9 +101,9 @@
 {
 	switch ((int)styleCache)
 	{
-		case UIwk3projectNativeItemInfoLight:
-		case UIwk3projectNativeItemInfoDark:
-		case UIwk3projectNativeItemDisclosure:
+		case UIHYP3OrlandoNativeItemInfoLight:
+		case UIHYP3OrlandoNativeItemInfoDark:
+		case UIHYP3OrlandoNativeItemDisclosure:
 			return suggestedResizing & ~(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 		default: {
 			break;

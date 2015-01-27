@@ -973,8 +973,8 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
 		UIDevice *currentDevice = [UIDevice currentDevice];
 		NSString *currentLocaleIdentifier = [[NSLocale currentLocale] localeIdentifier];
 		NSString *currentDeviceInfo = [NSString stringWithFormat:@"%@/%@; %@; %@;",[currentDevice model],[currentDevice systemVersion],[currentDevice systemName],currentLocaleIdentifier];
-		NSString *kwk3projectUserAgentPrefix = [NSString stringWithFormat:@"%s%s%s %s%s","Appc","eler","ator","Tita","nium"];
-		userAgent = [[NSString stringWithFormat:@"%@/%s (%@)",kwk3projectUserAgentPrefix,TI_VERSION_STR,currentDeviceInfo] retain];
+		NSString *kHYP3OrlandoUserAgentPrefix = [NSString stringWithFormat:@"%s%s%s %s%s","Appc","eler","ator","Tita","nium"];
+		userAgent = [[NSString stringWithFormat:@"%@/%s (%@)",kHYP3OrlandoUserAgentPrefix,TI_VERSION_STR,currentDeviceInfo] retain];
 	}
 	return userAgent;
 }
@@ -1125,7 +1125,7 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
             errorString = [error localizedDescription];
         } else {
             // If we have no data...
-            // This should never happen on a wk3project app using the node.js CLI
+            // This should never happen on a HYP3Orlando app using the node.js CLI
             errorString = @"File not found";
         }
         if(errorString != nil) {

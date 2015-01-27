@@ -17,7 +17,7 @@
  */
 @protocol TiKeyboardFocusableView
 
-#pragma mark Public wk3project APIs.
+#pragma mark Public HYP3Orlando APIs.
 
 /**
  Tells the view to focus.

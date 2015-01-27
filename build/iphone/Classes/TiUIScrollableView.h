@@ -33,7 +33,7 @@
     BOOL pageChanged;
 }
 
-#pragma mark - wk3project Internal Use Only
+#pragma mark - HYP3Orlando Internal Use Only
 -(void)manageRotation;
 -(UIScrollView*)scrollview;
 -(void)refreshScrollView:(CGRect)visibleBounds readd:(BOOL)readd;

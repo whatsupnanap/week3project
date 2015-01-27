@@ -39,12 +39,12 @@ MAKE_SYSTEM_PROP(DONE,UIBarButtonSystemItemDone);
 MAKE_SYSTEM_PROP(FLEXIBLE_SPACE,UIBarButtonSystemItemFlexibleSpace);
 MAKE_SYSTEM_PROP(FIXED_SPACE,UIBarButtonSystemItemFixedSpace);
 
-MAKE_SYSTEM_PROP(ACTIVITY,UIwk3projectNativeItemSpinner);
-MAKE_SYSTEM_PROP(SPINNER,UIwk3projectNativeItemSpinner);
-MAKE_SYSTEM_PROP(INFO_LIGHT,UIwk3projectNativeItemInfoLight);
-MAKE_SYSTEM_PROP(INFO_DARK,UIwk3projectNativeItemInfoDark);
-MAKE_SYSTEM_PROP(DISCLOSURE,UIwk3projectNativeItemDisclosure);
-MAKE_SYSTEM_PROP(CONTACT_ADD,UIwk3projectNativeItemContactAdd);
+MAKE_SYSTEM_PROP(ACTIVITY,UIHYP3OrlandoNativeItemSpinner);
+MAKE_SYSTEM_PROP(SPINNER,UIHYP3OrlandoNativeItemSpinner);
+MAKE_SYSTEM_PROP(INFO_LIGHT,UIHYP3OrlandoNativeItemInfoLight);
+MAKE_SYSTEM_PROP(INFO_DARK,UIHYP3OrlandoNativeItemInfoDark);
+MAKE_SYSTEM_PROP(DISCLOSURE,UIHYP3OrlandoNativeItemDisclosure);
+MAKE_SYSTEM_PROP(CONTACT_ADD,UIHYP3OrlandoNativeItemContactAdd);
 
 
 @end

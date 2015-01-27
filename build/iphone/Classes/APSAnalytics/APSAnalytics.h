@@ -20,9 +20,9 @@ extern NSString * const APSDeployTypeProduction;
 
 /**
  * The APSAnalytics class configures the application to use the APS analytic services
- * to send analytic data that can be viewed on the wk3project Dashboard.
+ * to send analytic data that can be viewed on the HYP3Orlando Dashboard.
  *
- * For information on getting started with wk3project Platform Services,
+ * For information on getting started with HYP3Orlando Platform Services,
  * see [Appclerator Platform Services for iOS](http://bit.ly/1kqteQS).
  */
 @interface APSAnalytics : NSObject

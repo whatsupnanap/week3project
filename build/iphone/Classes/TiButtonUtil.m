@@ -16,23 +16,23 @@
 {
 	switch (type)
 	{
-		case UIwk3projectNativeItemInfoLight:
+		case UIHYP3OrlandoNativeItemInfoLight:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoLight];
 		}
-		case UIwk3projectNativeItemInfoDark:
+		case UIHYP3OrlandoNativeItemInfoDark:
 		{
 			return [UIButton buttonWithType:UIButtonTypeInfoDark];
 		}
-		case UIwk3projectNativeItemDisclosure:
+		case UIHYP3OrlandoNativeItemDisclosure:
 		{
 			return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 		}
-		case UIwk3projectNativeItemContactAdd:
+		case UIHYP3OrlandoNativeItemContactAdd:
 		{
 			return [UIButton buttonWithType:UIButtonTypeContactAdd];
 		}
-		case UIwk3projectNativeItemSpinner:
+		case UIHYP3OrlandoNativeItemSpinner:
 		{
 			UIActivityIndicatorView *button = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
 			[button startAnimating];

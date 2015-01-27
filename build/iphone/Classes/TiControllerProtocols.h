@@ -52,7 +52,7 @@
 @end
 
 /**
- Protocol for containment controller. Implemented by UIViewControllers that can host wk3project Windows
+ Protocol for containment controller. Implemented by UIViewControllers that can host HYP3Orlando Windows
  */
 @protocol TiControllerContainment <NSObject>
 @required
