@@ -1,9 +1,6 @@
 var mainWindow = Ti.UI.createWindow({
 	backgroundColor : "black",
-	//fullscreen : true,
-	//layout : "vertical",
-	//title : "HYP3",
-	//image:"1669679_523030604478031_865814781_o.jpg"
+	navBarHidden : true
 
 });
 
@@ -60,19 +57,19 @@ exports.buildUI = function(obj) {
 		views.push(mainView);
 		scrollView.views = views;
 	}
-	
+
 	var t = 0;
-	
+
 	setInterval(function(e) {
-		if(t >= scrollView.views.length) {
+		if (t >= scrollView.views.length) {
 			t = 0;
 		}
-		
+
 		scrollView.scrollToView(t);
 		t++;
-		
+
 	}, 3000);
-	
+
 	mainWindow.add(scrollView);
 	mainWindow.open();
 };
@@ -98,18 +95,19 @@ var igButton = Ti.UI.createView({
 	backgroundColor : "#3f729b",
 	width : "33%",
 	height : "10%",
-	bottom : "10%",
+	bottom : "10.3%",
 	left : 0
 
 });
 
 var igView = Ti.UI.createImageView({
-	image:"icons/icons_09.png",
-	height:"80%"
+	image : "icons/icons_09.png",
+	height : "50%"
 });
 
 var igLabel = Ti.UI.createLabel({
 	//text : "instagram",
+	//top:"20%",
 	textAlignment : "center",
 	color : "white",
 	font : {
@@ -118,12 +116,23 @@ var igLabel = Ti.UI.createLabel({
 	}
 });
 
-
-
 var igWindow = Ti.UI.createWindow({
 	backgroundColor : "pink",
 	title : "#HYP3Life",
 	//fullscreen : true
+});
+
+igButton.addEventListener('click', function() {
+	var igwindow = Ti.UI.createWindow();
+
+	var igWv = Titanium.UI.createWebView({
+		url : 'http://instagram.com/hyp3orlando'
+	});
+	igwindow.add(igWv);
+	navigationWindow.open();
+	navigationWindow.openWindow(igwindow);
+	//window.open({modal:true});
+
 });
 
 //////facebook page BUTTON
@@ -132,7 +141,7 @@ var fbButton = Ti.UI.createView({
 	backgroundColor : "#3b5998",
 	width : "33%",
 	height : "10%",
-	bottom : "10%"
+	bottom : "10.3%"
 	//top : 150,
 
 });
@@ -148,16 +157,14 @@ var fbLabel = Ti.UI.createLabel({
 });
 
 var fvView = Ti.UI.createImageView({
-	image:"icons/icons_03.png",
-	height:"80%"
+	image : "icons/icons_03.png",
+	height : "50%"
 });
-
 
 var fbWindow = Ti.UI.createWindow({
 	backgroundColor : "white",
 	//fullscreen : true
 });
-
 
 fbButton.addEventListener('click', function() {
 	var fbwindow = Ti.UI.createWindow();
@@ -179,7 +186,7 @@ var twitterButton = Ti.UI.createView({
 	width : "33%",
 	height : "10%",
 	right : "0%",
-	bottom : "10%"
+	bottom : "10.3%"
 
 });
 
@@ -194,8 +201,8 @@ var twitterLabel = Ti.UI.createLabel({
 });
 
 var twitterView = Ti.UI.createImageView({
-	image:"icons/icons_06.png",
-	height:"80%"
+	image : "icons/icons_06.png",
+	height : "50%"
 });
 
 twitterButton.addEventListener('click', function() {
@@ -239,11 +246,26 @@ var snapWindow = Ti.UI.createWindow({
 });
 
 snapButton.addEventListener('click', function() {
-	var eventWind = Ti.UI.createWindow();
 
-	//var loadFile = require("custom");
-	//navigationWindow.openWindow(customWindow);
-	eventWind.open();
+	var eventWind = Ti.UI.createWindow();
+	function showCalendars(calendars) {
+		for (var i = 0; i < calendars.length; i++) {
+			Ti.API.info(calendars[i].name);
+		}
+	}
+
+
+	Ti.API.info('ALL CALENDARS:');
+	showCalendars(Ti.Calendar.allCalendars);
+	if (Ti.Platform.osname === 'android') {
+		Ti.API.info('SELECTABLE CALENDARS:');
+		showCalendars(Ti.Calendar.selectableCalendars);
+	}
+
+	//
+	navigationWindow.open();
+	navigationWindow.openWindow(eventWind);
+	//eventWind.open();
 });
 
 ////contact
@@ -271,6 +293,35 @@ var contactWindow = Ti.UI.createWindow({
 	backgroundColor : "pink",
 	//fullscreen : true
 });
+
+contactButton.addEventListener('click', function() {
+	Ti.API.info('Mail');
+	var emailDialog = Titanium.UI.createEmailDialog();
+	emailDialog.subject = "Subject";
+	emailDialog.messageBody = 'Hi,\n' + 'This is the body';
+	emailDialog.open();
+
+	emailDialog.addEventListener('complete', function(e) {
+		if (e.success) {
+			Ti.API.info("Mail Sent");
+		} else {
+			Ti.API.info(e.error);
+			//"system can't send email" means no account on device"
+		}
+	})
+	
+	contactWindow.add(emailDialog);
+	//contactwin.open();
+	navigationWindow.open();
+	navigationWindow.openWindow(contactWindow);
+	//window.open({modal:true});
+
+});
+
+//contactwindow.add(twitterWind);
+//navigationWindow.open();
+//navigationWindow.openWindow(contactwindow);
+//window.open({modal:true});
 
 ////camera
 
@@ -306,7 +357,6 @@ cameraButton.addEventListener('click', function() {
 		saveToPhotoGallery : true
 	});
 });
-
 
 fbLabel.add(fvView);
 twitterLabel.add(twitterView);

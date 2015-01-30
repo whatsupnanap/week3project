@@ -24,7 +24,7 @@ Cloud.debug = true;
 		if(e.success){
 			api.bunbun();
 		}else{
-			alert("Error Login");
+			alert("No Connection");
 		}
 		
 	});
@@ -35,7 +35,7 @@ Cloud.debug = true;
 
 	var data = require('data');
 	data.read();
-	console.log("no network");
+	alert("No Connection");
 	// // //bring Data from DB favorite from final
 	// // alert("You are not connecting to any internet.");
 // // 	
