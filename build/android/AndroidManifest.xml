@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.tanaka.wk3project" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21"/>
-	<application android:icon="@drawable/appicon" android:label="wk3project" android:name="Wk3projectApplication" android:debuggable="false" android:theme="@style/Theme.AppCompat">
-		<activity android:name=".Wk3projectActivity" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:configChanges="keyboardHidden|orientation|screenSize">
+	<application android:icon="@drawable/appicon" android:label="HYP3 Orlando" android:name="Hyp3OrlandoApplication" android:debuggable="false" android:theme="@style/Theme.AppCompat">
+		<activity android:name=".Hyp3OrlandoActivity" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:configChanges="keyboardHidden|orientation|screenSize">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>

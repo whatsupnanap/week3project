@@ -106,7 +106,6 @@ var igView = Ti.UI.createImageView({
 });
 
 var igLabel = Ti.UI.createLabel({
-	//text : "instagram",
 	//top:"20%",
 	textAlignment : "center",
 	color : "white",
@@ -114,7 +113,12 @@ var igLabel = Ti.UI.createLabel({
 		fontSize : "15dp",
 		fontFamily : "Helvetica"
 	}
+	
 });
+
+if (Ti.Platform.osname == "android") {
+	igLabel.text = "instagram";
+};
 
 var igWindow = Ti.UI.createWindow({
 	backgroundColor : "pink",
@@ -124,15 +128,16 @@ var igWindow = Ti.UI.createWindow({
 
 igButton.addEventListener('click', function() {
 	var igwindow = Ti.UI.createWindow();
-
 	var igWv = Titanium.UI.createWebView({
 		url : 'http://instagram.com/hyp3orlando'
 	});
 	igwindow.add(igWv);
+	if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
 	navigationWindow.open();
 	navigationWindow.openWindow(igwindow);
-	//window.open({modal:true});
-
+	}else{
+		igwindow.open();
+	};
 });
 
 //////facebook page BUTTON
@@ -156,6 +161,10 @@ var fbLabel = Ti.UI.createLabel({
 	}
 });
 
+if (Ti.Platform.osname == "android") {
+	fbLabel.text = "facebook";
+};
+
 var fvView = Ti.UI.createImageView({
 	image : "icons/icons_03.png",
 	height : "50%"
@@ -173,8 +182,14 @@ fbButton.addEventListener('click', function() {
 		url : 'https://www.facebook.com/HYP3Orlando'
 	});
 	fbwindow.add(fbWv);
+	
+	if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
 	navigationWindow.open();
 	navigationWindow.openWindow(fbwindow);
+	}else{
+		fbwindow.open();
+	};
+	
 	//window.open({modal:true});
 
 });
@@ -200,8 +215,12 @@ var twitterLabel = Ti.UI.createLabel({
 	}
 });
 
+if (Ti.Platform.osname == "android") {
+	twitterLabel.text = "twitter";
+};
+
 var twitterView = Ti.UI.createImageView({
-	image : "icons/icons_06.png",
+	image : "/icons/icons_06.png",
 	height : "50%"
 });
 
@@ -212,11 +231,12 @@ twitterButton.addEventListener('click', function() {
 		url : 'https://twitter.com/HYP3Orlando'
 	});
 	window.add(twitterWind);
-	console.log(navigationWindow);
+	if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
 	navigationWindow.open();
 	navigationWindow.openWindow(window);
-	//window.open({modal:true});
-
+	}else{
+		window.open();
+	};
 });
 
 ////EVENT
@@ -246,26 +266,26 @@ var snapWindow = Ti.UI.createWindow({
 });
 
 snapButton.addEventListener('click', function() {
-
-	var eventWind = Ti.UI.createWindow();
-	function showCalendars(calendars) {
-		for (var i = 0; i < calendars.length; i++) {
-			Ti.API.info(calendars[i].name);
-		}
-	}
-
-
-	Ti.API.info('ALL CALENDARS:');
-	showCalendars(Ti.Calendar.allCalendars);
-	if (Ti.Platform.osname === 'android') {
-		Ti.API.info('SELECTABLE CALENDARS:');
-		showCalendars(Ti.Calendar.selectableCalendars);
-	}
-
-	//
+	/*var cWindow = Ti.UI.createWindow();
+	
+	var calURL = "https://www.google.com/calendar/embed?src=hyp3orlando%40gmail.com&ctz=America/New_York";
+	
+	var calendar = Ti.UI.createWebView ({
+		url : calURL
+	});
+	
+	cWindow.add(calendar);
+	if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
 	navigationWindow.open();
-	navigationWindow.openWindow(eventWind);
-	//eventWind.open();
+	navigationWindow.openWindow(cWindow);
+	}else{
+		cWindow.open();
+	};*/
+	var calendar = require('calendar');
+	
+	navigationWindow.open();
+	navigationWindow.openWindow(snapWindow);
+	snapWindow.open();
 });
 
 ////contact
@@ -294,28 +314,24 @@ var contactWindow = Ti.UI.createWindow({
 	//fullscreen : true
 });
 
+var emailDialog = Titanium.UI.createEmailDialog({
+	messageBody : "<br /><br /><br /><br /><br /><br /><br /><br />Sent from the HYP3 App",
+	html:true,
+	toRecipients:['hyp3orlando@gmail.com']
+});
+
 contactButton.addEventListener('click', function() {
 	Ti.API.info('Mail');
-	var emailDialog = Titanium.UI.createEmailDialog();
-	emailDialog.subject = "Subject";
-	emailDialog.messageBody = 'Hi,\n' + 'This is the body';
 	emailDialog.open();
+});
 
-	emailDialog.addEventListener('complete', function(e) {
-		if (e.success) {
-			Ti.API.info("Mail Sent");
-		} else {
-			Ti.API.info(e.error);
-			//"system can't send email" means no account on device"
-		}
-	})
-	
-	contactWindow.add(emailDialog);
-	//contactwin.open();
-	navigationWindow.open();
-	navigationWindow.openWindow(contactWindow);
-	//window.open({modal:true});
-
+emailDialog.addEventListener('complete', function(e) {
+	if (e.success) {
+		Ti.API.info("Mail Sent");
+	} else {
+		Ti.API.info(e.error);
+		//"system can't send email" means no account on device"
+	}
 });
 
 //contactwindow.add(twitterWind);
