@@ -266,6 +266,8 @@ snapButton.addEventListener('click', function() {
 	}else{
 		cWindow.open();
 	};*/
+	
+	// TODO Change this to use API module with callback
 	var calendar = require('calendar');
 	
 	navigationWindow.open();
