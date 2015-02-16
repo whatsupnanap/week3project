@@ -251,22 +251,6 @@ var snapWindow = Ti.UI.createWindow({
 });
 
 snapButton.addEventListener('click', function() {
-	/*var cWindow = Ti.UI.createWindow();
-	
-	var calURL = "https://www.google.com/calendar/embed?src=hyp3orlando%40gmail.com&ctz=America/New_York";
-	
-	var calendar = Ti.UI.createWebView ({
-		url : calURL
-	});
-	
-	cWindow.add(calendar);
-	if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
-	navigationWindow.open();
-	navigationWindow.openWindow(cWindow);
-	}else{
-		cWindow.open();
-	};*/
-	
 	// TODO Change this to use API module with callback
 	var calendar = require('calendar');
 	
