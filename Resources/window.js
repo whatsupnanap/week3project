@@ -13,40 +13,31 @@ if (Ti.Platform.osname === "iphone" || Ti.Platform.osname === "ipad") {
 };
 
 exports.buildUI = function(obj) {
-	//console.log(obj);
 	console.log("obj " + JSON.stringify(obj));
+
 	var scrollView = Ti.UI.createScrollableView({
 		width : '100%',
 		height : '60%',
 		top : "19%",
 		backgroundColor : "black",
 		showHorizontalScrollIndicator : true,
-		// borderColor : '#FF0000',
-		// borderWidth : '2dp'
-		//backgroundColor:"red"
 	});
+	
 	var views = [];
 
-	for ( i = 0,
-	j = obj.length; i < j; i++) {
+	for (var i = 0, j = obj.length; i < j; i++) {
 
 		var mainView = Ti.UI.createView({
 			layout : "vertical",
-			//width : "40%",
 		});
 		var igPic = Ti.UI.createImageView({
 			image : obj[i].image,
 			top : 0,
-			// height : "90%",
 			width : Ti.UI.FILL,
-			//scale:"50%"
 		});
 
 		var usernameLbl = Ti.UI.createLabel({
-			font : {
-				fontSize : "10dp",
-				//backgroundColor:"yellow"
-			},
+			font : { fontSize : "10dp" },
 			bottom : "10%",
 			color : "white",
 			text : "post by: " + obj[i].username,
@@ -55,6 +46,7 @@ exports.buildUI = function(obj) {
 		mainView.add(igPic);
 		mainView.add(usernameLbl);
 		views.push(mainView);
+		
 		scrollView.views = views;
 	}
 
@@ -73,8 +65,6 @@ exports.buildUI = function(obj) {
 	mainWindow.add(scrollView);
 	mainWindow.open();
 };
-
-//data.buildUI(dbData);
 
 var hyp3Img = Ti.UI.createImageView({
 	image : "1669679_523030604478031_865814781_o.jpg",
@@ -106,7 +96,6 @@ var igView = Ti.UI.createImageView({
 });
 
 var igLabel = Ti.UI.createLabel({
-	//top:"20%",
 	textAlignment : "center",
 	color : "white",
 	font : {
@@ -123,7 +112,6 @@ if (Ti.Platform.osname == "android") {
 var igWindow = Ti.UI.createWindow({
 	backgroundColor : "pink",
 	title : "#HYP3Life",
-	//fullscreen : true
 });
 
 igButton.addEventListener('click', function() {
@@ -141,14 +129,11 @@ igButton.addEventListener('click', function() {
 });
 
 //////facebook page BUTTON
-
 var fbButton = Ti.UI.createView({
 	backgroundColor : "#3b5998",
 	width : "33%",
 	height : "10%",
 	bottom : "10.3%"
-	//top : 150,
-
 });
 
 var fbLabel = Ti.UI.createLabel({
