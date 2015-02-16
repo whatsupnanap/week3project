@@ -1,6 +1,5 @@
 // TODO Consolidate Calendar and Instagram calls into a single remote data function
 exports.remote = function(url, callback) {
-	
 	var xhr = Ti.Network.createHTTPClient({
 		onload : callback,
 		onerror : function(e) {
