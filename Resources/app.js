@@ -9,6 +9,7 @@ if (Ti.Network.online === true) {
 	console.log("online");
 		
 	// Push to DB which is save
+	// TODO Perhaps move this to an instagram module?
 	Cloud.Users.login({
 		login : "nanap",
 		password : "12345"
